@@ -30,8 +30,9 @@ class Node {
 		if(typeof existingEmployee !== typeof undefined) return;
 		await this.employees.put(address, {email, backup});
 	}
-	async removeEmployeeByAddress(address) {
-		await this.employees.del(address)
+	async getEmployeeByAddress(address) {
+		const email = await this.employees.get(address);
+		return email;
 	}
 }
 
@@ -48,7 +49,7 @@ async function runTest() {
 	const node = new Node(IPFS, OrbitDB);
 	await node.create();
 	await node.addEmployee('abcd', 'marko@bloxico.com', "marko@gmail.com");
-	//it will prevent me from editing an employee
+	//it will not allow me to edit the employee data
 	await node.addEmployee('abcd', 'milan@bloxico.com', "marko@gmail.com");
 	const employee = await node.getEmployeeByAddress('abcd');
 	console.log(employee);
