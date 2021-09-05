@@ -8,10 +8,6 @@ class Node {
 			preload: {enabled: true},
 			repo: './ipfs',
 			EXPERIMENTAL: {pubsub: true},
-			config: {
-				Bootstrap: [],
-				Addresses: {Swarm: []}
-			}
 		})
 		await this._init();
 	}
@@ -19,8 +15,10 @@ class Node {
 		this.orbitdb = await this.OrbitDB.createInstance(this.node)
 		this.options = { 
 			accessController: {
+				//giving the creator the write access
 				write: [this.orbitdb.identity.id]
-			}
+			},
+			replicate: true
 		}
 		this.employees = await this.orbitdb.keyvalue('employees',
 		this.options);
