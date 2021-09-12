@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "put": "node web3Storage.js"
   },
   "engines": {
     "node": ">=10.0.0"
@@ -12,8 +12,19 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@textile/powergate-client": "^4.1.0",
     "ipfs": "^0.51.0",
+    "ipfs-api": "^26.1.2",
+    "ipfs-http-client": "^52.0.3",
     "ipfs-repo-migrations": "^10.0.0",
-    "orbit-db": "^0.26.1"
+    "orbit-db": "^0.26.1",
+    "orbit-db-powergate-io": "^0.2.1",
+    "web3.storage": "^3.3.2"
+  },
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es6",
+    "rootDir": "./",
+    "esModuleInterop": true
   }
 }
